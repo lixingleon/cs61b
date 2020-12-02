@@ -3,6 +3,7 @@
  */
 public class LeapYear {
 
+<<<<<<< HEAD
     private static boolean isLeapYear(int year){
         if(year%400 == 0){
             return true;
@@ -15,6 +16,8 @@ public class LeapYear {
         }
     }
 
+=======
+>>>>>>> fa6b0b8a7f1d83bf1aa47b9182bce4cad238f14e
     /** Calls isLeapYear to print correct statement.
      *  @param  year to be analyzed
      */
@@ -41,6 +44,9 @@ public class LeapYear {
             }
         }
     }
+<<<<<<< HEAD
     
+=======
+>>>>>>> fa6b0b8a7f1d83bf1aa47b9182bce4cad238f14e
 }
 
