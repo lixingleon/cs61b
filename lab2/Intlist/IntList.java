@@ -79,10 +79,23 @@ public class IntList {
      * Returns a list consisting of the elements of A followed by the
      * *  elements of B.  May modify items of A. Don't use 'new'.
      */
-
+    /**
+     *u Iterative using a pointer.
+     */
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        if(A == null){
+            return B;
+        }
+
+        IntList pointer = A;
+        IntList result = A;
+        while(pointer.rest!=null){
+            pointer = pointer.rest;
+        }
+        pointer.rest = B;
+        return result;
+
     }
 
     /**
@@ -90,8 +103,29 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        if(A == null){
+            return B;
+        }
+        /**
+         *  iterative way
+         */
+        IntList result = new IntList(A.first,null);
+        IntList pointer = result;
+        A = A.rest;
+        while(A!=null){
+            pointer.rest = new IntList(A.first,null);
+            pointer = pointer.rest;
+            A = A.rest;
+        }
+        pointer.rest = B;
+        return result;
+        /**
+         * recursive way
+         *
+         *
+         * return new IntList(A.first,catenate(A.rest,B));
+         */
+
     }
 
 
