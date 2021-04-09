@@ -79,6 +79,17 @@ public class ComplexOomage implements Oomage {
         }
         return new ComplexOomage(params);
     }
+    public static ComplexOomage specialComplexOomage() {
+        int N = 10;
+        ArrayList<Integer> params = new ArrayList<>(N);
+        for (int i =0; i<6; i++){
+            params.add(StdRandom.uniform(0, 255));
+        }
+        for (int i =6; i<N; i++){
+            params.add(255);
+        }
+        return new ComplexOomage(params);
+    }
 
     public static void main(String[] args) {
         System.out.println("Drawing 4 random complex Oomages.");
