@@ -2,25 +2,23 @@ package es.datastructur.synthesizer;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
 
-//Note: This file will not compile until you complete task 1 (BoundedQueue).
-public class GuitarString {
+public class HarpString {
     /** Constants. Do not change. In case you're curious, the keyword final
      * means the values cannot be changed at runtime. */
     private static final int SR = 44100;      // Sampling Rate
-    private static final double DECAY = 1; // energy decay factor
+    private static final double DECAY = -.9; // energy decay factor
 
     /* Buffer for storing sound data. */
     private BoundedQueue<Double> buffer;
 
     /* Create a guitar string of the given frequency.  */
-    public GuitarString(double frequency) {
+    public HarpString(double frequency) {
         // TODO: Create a buffer with capacity = SR / frequency. You'll need to
         //       cast the result of this division operation into an int. For
         //       better accuracy, use the Math.round() function before casting.
         //       Your buffer should be initially filled with zeros.
-        buffer = new ArrayRingBuffer<>((int)(Math.round(SR/frequency)));
+        buffer = new ArrayRingBuffer<>((int)(2*Math.round(SR/frequency)));
         while(buffer.isFull()!=true){
             buffer.enqueue(0.0);
         }
@@ -47,7 +45,7 @@ public class GuitarString {
         for (int i =0; i<buffer.capacity(); i++){
             buffer.enqueue(al.get(i));
         }
-        
+
 
     }
 
@@ -68,7 +66,7 @@ public class GuitarString {
             factor = 1;
         }
 
-        Double newDouble = DECAY*(front+secondFront)/2;
+        Double newDouble = -DECAY*(front+secondFront)/2;
         buffer.enqueue(newDouble);
 
 
@@ -80,4 +78,3 @@ public class GuitarString {
         return buffer.peek();
     }
 }
-    // TODO: Remove all comments that say TODO when you're done.
